@@ -1,5 +1,6 @@
 //import { controller } from "./controller";
 import Particul from "./Particul";
+import Explodep  from "./Explodep";
 
 
 
@@ -8,6 +9,8 @@ const animation = {
     ctx: undefined, 
     particuls : [],
     particulsNb : 5, 
+    Explodep : [],
+    ExplodepNb : 1, 
     //controller,
 
     init(){
@@ -24,6 +27,7 @@ const animation = {
     for(let i = 0; i < this.particulsNb; i++){
         this.particuls.push(new Particul(this)); 
     }    
+
     
       //* initialiser mon controleur 
 
@@ -33,9 +37,34 @@ const animation = {
 
     draw(){
         this.particuls.forEach (particul => {
+    
+            if(particul.location.y < particul.maxH){
+                for(let i = 0; i < this.ExplodepNb; i++){
+                    const newEx = new Explodep(this);
+                    //console.log(particul.location);
+                    newEx.color = particul.color
+                    newEx.location.x = particul.location.x
+                    //newEx.location.y = particul.location.y
+                    this.particuls.push(newEx); 
+                }  
+                //particul.splice(particul[i], 1)
+            }
+        })
+
+
+
+        this.particuls.forEach (particul => {
             if(particul !== undefined){
                 particul.update(); 
             }
+            
+        })
+
+        this.Explodep.forEach (eparticul => {
+            if(eparticul !== undefined){
+                eparticul.update(); 
+            }
+            
         })
     },
 

@@ -1,6 +1,6 @@
 import vector from "./vector";
 
-export default class Particul {
+export default class Explodep {
     constructor(animation) {
         this.animation = animation;
         this.canvas = this.animation.canvasElt;
@@ -9,13 +9,14 @@ export default class Particul {
         this.color = "#fff";
         this.widht = 5;
         this.height = 5;
-        const x = 10;
-        const y = 10;
+        const x = 100;
+        const y = 100;
         this.location = new vector(x, y); 
 
-        this.speed = 10; 
-        this.angle = Math.rendom() *360; 
-        this.gravity = 0.2; 
+        this.speed = 5; 
+        this.angle = Math.random() *360; 
+        //this.angle = 100; 
+        this.friction = 4; 
 
     }
 
@@ -34,11 +35,13 @@ export default class Particul {
         const y = this.speed * Math.sin(this.angle * (Math.PI/180));
         const newCoo = new vector(x, y);
         this.location.add(newCoo);
+        
+        //console.log(this.location.y);
+        
+        //this.location.y = this.location.y + this.friction; 
 
-        if(this.location.y < this.maxH){
-            //console.log("coucou");
-            this.angle = this.angle + 5; 
-        }
+
+
 
 			this.draw(); 
     }

@@ -10,6 +10,13 @@ body {
     background-color: black;
     }
 
+.input {
+    position: fixed;
+    top: 30px;
+    right: 10px;
+    z-index: 100000;
+    color: #fff;
+}
 
 canvas {
 
