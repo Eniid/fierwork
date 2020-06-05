@@ -6,12 +6,12 @@ export default class Particul {
         this.canvas = this.animation.canvasElt;
         this.ctx = this.animation.ctx;
 
-        this.color = "#fff";
-        const x = 25;
-        const y = 25;
-        this.location = new vector(x, y); 
+        this.color = 'hsla(' + (Math.random() * 360) + ', 50%, 40%, 1)';;
         this.widht = 15;
         this.height = 15;
+        const x = (Math.random() * this.canvas.width + 15) -15;
+        const y = this.canvas.height -15;
+        this.location = new vector(x, y); 
     }
 
 
@@ -22,8 +22,7 @@ export default class Particul {
         this.ctx.fill();
     }; 
 
-    update(){
-
+    update(){            
 			this.draw(); 
     }
 }

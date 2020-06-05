@@ -7,7 +7,7 @@ const animation = {
     canvasElt: undefined, 
     ctx: undefined, 
     particuls : [],
-    particulsNb : 1, 
+    particulsNb : 5, 
     //controller,
 
     init(){
@@ -21,7 +21,9 @@ const animation = {
         }, false)
     
       //Ajouter ici les nouvelles classes 
-      for(let i = 0, i < this.particulsNb)
+    for(let i = 0; i < this.particulsNb; i++){
+        this.particuls.push(new Particul(this)); 
+    }    
     
       //* initialiser mon controleur 
 
@@ -30,7 +32,11 @@ const animation = {
     },
 
     draw(){
-      // Ajouter ici les uptade
+        this.particuls.forEach (particul => {
+            if(particul !== undefined){
+                particul.update(); 
+            }
+        })
     },
 
     resize(){
