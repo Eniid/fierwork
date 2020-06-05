@@ -6,18 +6,16 @@ export default class Particul {
         this.canvas = this.animation.canvasElt;
         this.ctx = this.animation.ctx;
 
-        this.color = 'hsla(' + (Math.random() * 360) + ', 50%, 40%, 1)';;
-        this.widht = 10;
-        this.height = 10;
-        const x = (Math.random() * this.canvas.width + 15) -15;
-        const y = this.canvas.height -15;
+        this.color = "#fff";
+        this.widht = 5;
+        this.height = 5;
+        const x = 10;
+        const y = 10;
         this.location = new vector(x, y); 
 
-        this.speed = 30; 
-        this.friction = 0.6; 
-        this.maxH = this.canvas.height/2;
-        this.elipsSize = 10; 
-        this.angle = 270; 
+        this.speed = 10; 
+        this.angle = Math.rendom() *360; 
+        this.gravity = 0.2; 
 
     }
 
@@ -37,10 +35,9 @@ export default class Particul {
         const newCoo = new vector(x, y);
         this.location.add(newCoo);
 
-        this.speed = this.speed - this.friction;
-
         if(this.location.y < this.maxH){
             //console.log("coucou");
+            this.angle = this.angle + 5; 
         }
 
 			this.draw(); 
