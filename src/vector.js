@@ -3,4 +3,9 @@ export default class vector {
         this.x = x; 
         this.y = y; 
     }
+
+    add(vector) {
+        this.x += vector.x;
+        this.y += vector.y;
+    }
 }

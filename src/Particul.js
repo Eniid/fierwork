@@ -7,11 +7,16 @@ export default class Particul {
         this.ctx = this.animation.ctx;
 
         this.color = 'hsla(' + (Math.random() * 360) + ', 50%, 40%, 1)';;
-        this.widht = 15;
-        this.height = 15;
+        this.widht = 10;
+        this.height = 10;
         const x = (Math.random() * this.canvas.width + 15) -15;
         const y = this.canvas.height -15;
         this.location = new vector(x, y); 
+
+        this.speed = 10; 
+        this.maxH = this.canvas.height/2;
+        this.gavity = 0.6; 
+        this.angle = 270; 
     }
 
 
@@ -22,7 +27,18 @@ export default class Particul {
         this.ctx.fill();
     }; 
 
-    update(){            
+    update(){ 
+        const x = this.speed * Math.cos(this.angle * (Math.PI/180));
+        const y = this.speed * Math.sin(this.angle * (Math.PI/180));
+        const newCoo = new vector(x, y);
+        this.location.add(newCoo);
+
+        if(this.location.y < this.maxH){
+            //console.log("coucou");
+            
+            
+        }
+
 			this.draw(); 
     }
 }
